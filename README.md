@@ -85,7 +85,7 @@ A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies the
 | `news_fetcher.py`   | Fetches and filters RSS feed headlines         |
 | `owoifier.py`       | Transforms text into OwOified form             |
 | `bluesky_client.py` | Handles login and posting with embeds          |
-| `posted.txt`        | Tracks already-posted links to avoid reposting |
+| `posted.txt`        | Tracks posted/skipped links to avoid reposting |
 | `config.py`         | Stores your Bluesky credentials                |
 
 ---
