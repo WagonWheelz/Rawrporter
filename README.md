@@ -1,4 +1,5 @@
 # 📰 Rawrporter 🐾
+![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?style=for-the-badge&logo=Bluesky&logoColor=white)![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies them, and posts the the headlines to Bluesky.
 
