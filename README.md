@@ -83,6 +83,7 @@ A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies the
 
 | File                | Description                                    |
 | ------------------- | ---------------------------------------------- |
+| `auto-main.py`      | Main entry point for the bot                   |
 | `main.py`           | Main entry point for the bot                   |
 | `news_fetcher.py`   | Fetches and filters RSS feed headlines         |
 | `owoifier.py`       | Transforms text into OwOified form             |
