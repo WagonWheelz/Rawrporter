@@ -6,7 +6,7 @@ ENV APP_PASSWORD=PASSWORD123
 USER root
 
 RUN <<EOF
-    pacman --noconfirm -Sy python-pip
+    pacman --noconfirm -Sy --break-system-packages python-pip
     mkdir /app
 EOF
 
