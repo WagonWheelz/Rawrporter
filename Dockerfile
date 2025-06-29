@@ -12,10 +12,7 @@ EOF
 
 COPY ./src /app
 
-RUN <<PIP
-    cd /app
-    pip install -r requirements.txt
-PIP
+RUN python -m pip install -r /app/requirements.txt
 
 LABEL version="1.0"
 
