@@ -24,23 +24,24 @@ def skip_posted(link):
 def main():
     print("[Bot] Starting run...")
 
-    news_items = fetch_news()  # fetch_news should return a list of (headline, link) tuples
+    news_items = fetch_news()
     if not news_items:
         print("[Bot] No suitable headlines found.")
         sys.exit(0)
 
     posted_links = load_posted()
 
-    for headline, link in news_items:
+    for headline, link, thumb_url in news_items:
         if link in posted_links:
             print(f"[Bot] Already posted this article, skipping: {headline}")
             continue
 
         owoified_text = owoify(headline)
-        message = f"{owoified_text}\n\n{link}"
+        message = f"{owoified_text}"
 
         print("\n--- Draft Post ---")
         print(message)
+        print(f"Thumbnail URL: {thumb_url}")
         print("------------------")
 
         approval = input("Post this message? (y/n): ").strip().lower()
@@ -52,7 +53,7 @@ def main():
                 sys.exit(1)
 
             print("[Bluesky Client] Posting message...")
-            success = client.post(owoified_text, link)
+            success = client.post(headline, message, link, image_url=thumb_url)
 
             if success:
                 print("[Bot] Post successful!")
