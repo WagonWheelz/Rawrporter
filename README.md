@@ -36,7 +36,7 @@ A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies the
 ---
 ## Example Output
 
-![Preview Thumbnail](https://imgur.com/TOZYwwV)
+![Preview Thumbnail](https://i.imgur.com/TOZYwwV.png)
 <!-- Old thumbnail without RSS image (https://i.imgur.com/i70p5rS.png) -->
 
 
