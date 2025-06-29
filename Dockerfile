@@ -5,16 +5,12 @@ ENV APP_PASSWORD=PASSWORD123
 
 USER root
 
-RUN <<EOF
-    pacman --noconfirm -Syu --break-system-packages python python-pip
-    mkdir /app
-EOF
-
 COPY ./src /app
 
-RUN ls -l /app
-
-RUN /usr/bin/pip install -r /app/requirements.txt
+RUN <<EOF
+    pacman --noconfirm -Sy python python-pip
+    pip install --break-system-packages -r /app/requirements.txt
+EOF
 
 LABEL version="1.0"
 
