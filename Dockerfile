@@ -12,6 +12,8 @@ EOF
 
 COPY ./src /app
 
+RUN ls -l /app
+
 RUN /usr/bin/pip install -r /app/requirements.txt
 
 LABEL version="1.0"
