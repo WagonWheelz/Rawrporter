@@ -1,5 +1,5 @@
 # 📰 Rawrporter 🐾
-![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?style=for-the-badge&logo=Bluesky&logoColor=white)![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)![PythonAnywhere](https://img.shields.io/badge/pythonanywhere-%232F9FD7.svg?style=for-the-badge&logo=pythonanywhere&logoColor=151515)
+![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?style=for-the-badge&logo=Bluesky&logoColor=white)![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies them, and posts the the headlines to Bluesky.
 
@@ -36,7 +36,8 @@ A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies the
 ---
 ## Example Output
 
-![Preview Thumbnail](https://i.imgur.com/i70p5rS.png)
+![Preview Thumbnail](https://imgur.com/TOZYwwV)
+<!-- Old thumbnail without RSS image (https://i.imgur.com/i70p5rS.png) -->
 
 
 ---
