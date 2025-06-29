@@ -1,7 +1,7 @@
 # 📰 Rawrporter 🐾
 ![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?style=for-the-badge&logo=Bluesky&logoColor=white)![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)![PythonAnywhere](https://img.shields.io/badge/pythonanywhere-%232F9FD7.svg?style=for-the-badge&logo=pythonanywhere&logoColor=151515)
 
-A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies them, and posts the the headlines to Bluesky.
+A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies them, and posts the headlines to Bluesky.
 
 ![Preview Thumbnail](https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:fth7xvawb23gpzbzpx6clcio/bafkreia6egmguisdeugiir3pvkkq4crtqw4c77ajwuilk4dw74ab7t2lyi@jpeg)
 
@@ -95,5 +95,5 @@ A Python bot that fetches headlines from *The Guardian*'s RSS feed, OwOifies the
 
 ## 🤖 AI Disclosure
 
-ChatGPT was used to beautify the code and develop some functions. This was my first time making a bot of any kind or code of any kind and used ChatGPT to assist me, I then autopsy each request and learn how it works so I can learn for myself next time. I have taken the code ChatGPT provided and streamlined it (I Think) hwoever it works and there may still be issues. I attempted to create this repo and the readme based on other ones i've seen hwoever I may have gotten part of it wrong, ChatGPT was not used for the creation of this readme file.
+ChatGPT was used t beautify the code and develop some functions. This was my first time making a bot and i have very little experince with code, I used ChatGPT to provide guidence and assistance with making my idea come to life. Any aspect that was wholly written by AI has been autopsied by me so i may learn how and why it works. The majority of the code, it's uniqueness and some niche components are written by me where AI provided a guidline and error adjustments. No section of this readme was written by AI. Whilst I personally enjoy playing with AI, I understand the implications it has on both IP rights and jobs, My use of ChatGPT I feel falls under propper use as I was using it as a learning tool.
 
