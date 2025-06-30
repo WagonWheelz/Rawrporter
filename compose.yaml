@@ -1,6 +1,6 @@
 services:
   rawrporter:
-    image: tristan/test:latest
+    image: WagonWheelz/Rawrporter:latest
     container_name: rawrporter
     restart: no
     environment:
