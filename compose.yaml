@@ -1,0 +1,8 @@
+services:
+  rawrporter:
+    image: tristan/test:latest
+    container_name: rawrporter
+    restart: no
+    environment:
+      - USERNAME=changeme
+      - APP_PASSWORD=changeme

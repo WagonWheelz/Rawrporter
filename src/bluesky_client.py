@@ -19,17 +19,11 @@ class BlueskyClient:
 
     def post(self, content, link):
         try:
-            # Load local image from fixed absolute path
-            image_path = r"C:\Users\jakob\Documents\NuwusCloneBot\thumbnail2.png"
-            with open(image_path, "rb") as img_file:
-                blob = self.client.com.atproto.repo.upload_blob(img_file.read())
-
             embed = EmbedExternal(
                 external=External(
                     uri=link,
                     title="News Article",
                     description="Click to read the full article.",
-                    thumb=blob.blob  # Use uploaded blob for thumbnail
                 )
             )
 

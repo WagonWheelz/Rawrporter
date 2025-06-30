@@ -1,4 +1,5 @@
 import sys
+import os
 from news_fetcher import fetch_news
 from owoifier import owoify
 from bluesky_client import BlueskyClient
@@ -43,7 +44,10 @@ def main():
         print(message)
         print("------------------")
 
-        approval = input("Post this message? (y/n): ").strip().lower()
+        if os.environ.get('DOCKER', 'FALSE') == 'TRUE':
+            approval = 'y'
+        else:
+            approval = input("Post this message? (y/n): ").strip().lower()
         if approval == 'y':
             print("[Bluesky Client] Logging in...")
             client = BlueskyClient(USERNAME, APP_PASSWORD)
