@@ -7,3 +7,4 @@ services:
       - USERNAME=changeme #full bluesky username
       - APP_PASSWORD=changeme #bluesky app password
       - BOT_CYCLE=60 #cycle time in seconds that you would like the bot to run on
+      - RSS_FEED=https://www.theguardian.com/world/rss #rss feed that you want the bot to monitor

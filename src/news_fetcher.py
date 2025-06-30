@@ -2,7 +2,7 @@ import feedparser
 import datetime
 import os
 
-wait = os.environ.get('BOT_CYCLE', '60')
+source = os.environ.get('RSS_FEED', 'https://www.theguardian.com/world/rss')
 
 BLOCKLIST = [
     "violence",
@@ -26,18 +26,22 @@ def contains_blocked_word(text):
     text_lower = text.lower()
     return any(block_word.lower() in text_lower for block_word in BLOCKLIST)
 
-def fetch_news():
-    feed = feedparser.parse("https://www.theguardian.com/world/rss")
+def fetch_news( lastPost ):
+    feed = feedparser.parse(source)
     articles = []
     if feed.entries:
         for entry in feed.entries:
             headline = entry.title
             if not contains_blocked_word(headline):
-                if datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %Z') > os.environ.get('POSTED_DATE', datetime.datetime.now() - datetime.timedelta(seconds=60)):
+                try:
+                    pubDate = datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %Z')
+                except:
+                    pubDate = datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %z')
+                if pubDate > lastPost:
                     link = entry.link
                     print("[News Fetcher] Headline:", headline)
                     print("[News Fetcher] Link:", link)
-                    date = datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %Z')
+                    date = pubDate
                     articles.append((headline, link, date))
         if articles:
             return articles

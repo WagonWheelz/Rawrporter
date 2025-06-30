@@ -6,7 +6,14 @@ from owoifier import owoify
 from bluesky_client import BlueskyClient
 from config import USERNAME, APP_PASSWORD
 
-POSTED_DATE = os.environ.get('POSTED_DATE', datetime.datetime.now() - datetime.timedelta(seconds=60))
+wait = os.environ.get('BOT_CYCLE', '60')
+
+lastPost = os.environ.get('POSTED_DATE', datetime.datetime.now(datetime.timezone.utc).astimezone() - datetime.timedelta(seconds= 2 * int(wait)))
+
+os.environ['POSTED_DATE'] = str(lastPost)
+print(lastPost)
+
+lastPost = datetime.datetime.strptime(os.environ.get('POSTED_DATE'),'%Y-%m-%d %H:%M:%S.%f%z')
 
 def load_posted():
     try:
@@ -16,19 +23,20 @@ def load_posted():
         return set()
 
 def save_posted(date):
-    if date > POSTED_DATE:
-        os.environ['POSTED_DATE'] = date
+    if date > lastPost:
+        os.environ['POSTED_DATE'] = str(date)
+        lastPost = date
 
 def main():
     print("[Bot] Starting run...")
 
-    news_items = fetch_news()  # fetch_news should return a list of (headline, link) tuples
+    news_items = fetch_news( lastPost )  # fetch_news should return a list of (headline, link) tuples
     if not news_items:
         print("[Bot] No suitable headlines found.")
         sys.exit(0)
 
     for headline, link, date in news_items:
-        if date < POSTED_DATE:
+        if date < lastPost:
             print(f"[Bot] Already posted this article, skipping: {headline}")
             continue
 

@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "Running in Docker: "$DOCKER
+echo "Monitored RSS Feed: "$RSS_FEED
 echo "BSKY Account: "$USERNAME
 echo "BSKY App Passwod: "$APP_PASSWORD
 while true; do
