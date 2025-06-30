@@ -1,8 +1,9 @@
 services:
   rawrporter:
-    image: WagonWheelz/Rawrporter:latest
+    image: WagonWheelz/rawrporter:latest
     container_name: rawrporter
     restart: no
     environment:
-      - USERNAME=changeme
-      - APP_PASSWORD=changeme
+      - USERNAME=changeme #full bluesky username
+      - APP_PASSWORD=changeme #bluesky app password
+      - BOT_CYCLE=60 #cycle time in seconds that you would like the bot to run on

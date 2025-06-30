@@ -1,4 +1,8 @@
 import feedparser
+import datetime
+import os
+
+wait = os.environ.get('BOT_CYCLE', '60')
 
 BLOCKLIST = [
     "violence",
@@ -29,10 +33,12 @@ def fetch_news():
         for entry in feed.entries:
             headline = entry.title
             if not contains_blocked_word(headline):
-                link = entry.link
-                print("[News Fetcher] Headline:", headline)
-                print("[News Fetcher] Link:", link)
-                articles.append((headline, link))
+                if datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %Z') > os.environ.get('POSTED_DATE', datetime.datetime.now() - datetime.timedelta(seconds=60)):
+                    link = entry.link
+                    print("[News Fetcher] Headline:", headline)
+                    print("[News Fetcher] Link:", link)
+                    date = datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %Z')
+                    articles.append((headline, link, date))
         if articles:
             return articles
         else:

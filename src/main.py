@@ -1,11 +1,12 @@
 import sys
 import os
+import datetime
 from news_fetcher import fetch_news
 from owoifier import owoify
 from bluesky_client import BlueskyClient
 from config import USERNAME, APP_PASSWORD
 
-POSTED_FILE = "posted.txt"
+POSTED_DATE = os.environ.get('POSTED_DATE', datetime.datetime.now() - datetime.timedelta(seconds=60))
 
 def load_posted():
     try:
@@ -14,13 +15,9 @@ def load_posted():
     except FileNotFoundError:
         return set()
 
-def save_posted(link):
-    with open(POSTED_FILE, "a") as f:
-        f.write(link + "\n")
-
-def skip_posted(link):
-    with open(POSTED_FILE, "a") as f:
-        f.write(link + "\n")
+def save_posted(date):
+    if date > POSTED_DATE:
+        os.environ['POSTED_DATE'] = date
 
 def main():
     print("[Bot] Starting run...")
@@ -30,10 +27,8 @@ def main():
         print("[Bot] No suitable headlines found.")
         sys.exit(0)
 
-    posted_links = load_posted()
-
-    for headline, link in news_items:
-        if link in posted_links:
+    for headline, link, date in news_items:
+        if date < POSTED_DATE:
             print(f"[Bot] Already posted this article, skipping: {headline}")
             continue
 
@@ -60,10 +55,9 @@ def main():
 
             if success:
                 print("[Bot] Post successful!")
-                save_posted(link)
+                save_posted(date)
             else:
                 print("[Bot] Post failed.")
-            break  # exit after posting
         else:
             print("[Bot] Post canceled by user, moving to next article...\n")
             skip_posted(link)
