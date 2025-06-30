@@ -3,6 +3,7 @@ ENV DOCKER="TRUE"
 ENV USERNAME="CHANGEME"
 ENV APP_PASSWORD="PASSWORD123"
 ENV BOT_CYCLE="60"
+ENV RSS_FEED="https://www.theguardian.com/world/rss"
 
 USER root
 
