@@ -28,9 +28,10 @@ def contains_blocked_word(text):
 
 def fetch_news( lastPost ):
     feed = feedparser.parse(source)
+    sorted_feed = sorted(feed.entries, key=lambda entry: entry.published_parsed)
     articles = []
-    if feed.entries:
-        for entry in feed.entries:
+    if sorted_feed:
+        for entry in sorted_feed:
             headline = entry.title
             if not contains_blocked_word(headline):
                 try:
