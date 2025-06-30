@@ -34,7 +34,7 @@ def main():
             sleepies()
             continue
 
-        for headline, link, date in news_items:
+        for headline, link, date, thumb_url in news_items:
             if date < lastPost:
                 print(f"[Bot] Already posted this article, skipping: {headline}")
                 continue
@@ -44,6 +44,7 @@ def main():
 
             print("\n--- Draft Post ---")
             print(message)
+            print(f"Thumbnail URL: {thumb_url}")
             print("------------------")
 
             if os.environ.get('DOCKER', 'FALSE') == 'TRUE':
@@ -58,7 +59,7 @@ def main():
                     sys.exit(1)
 
                 print("[Bluesky Client] Posting message...")
-                success = client.post(owoified_text, link)
+                success = success = client.post(headline, message, link, image_url=thumb_url)
 
                 if success:
                     print("[Bot] Post successful!")

@@ -1,7 +1,7 @@
 from atproto import Client
 from atproto_client.models.app.bsky.embed.external import Main as EmbedExternal
 from atproto_client.models.app.bsky.embed.external import External
-import os
+import requests
 
 class BlueskyClient:
     def __init__(self, username, app_password):
@@ -17,13 +17,21 @@ class BlueskyClient:
             print("[Bluesky Error] Login failed:", e)
             return False
 
-    def post(self, content, link):
+    def post(self, headline, content, link, image_url="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:fth7xvawb23gpzbzpx6clcio/bafkreia6egmguisdeugiir3pvkkq4crtqw4c77ajwuilk4dw74ab7t2lyi@jpeg"):
         try:
+            blob = None
+
+            if image_url:
+                response = requests.get(image_url)
+                response.raise_for_status()
+                blob = self.client.com.atproto.repo.upload_blob(response.content)
+
             embed = EmbedExternal(
                 external=External(
                     uri=link,
-                    title="News Article",
+                    title=headline,
                     description="Click to read the full article.",
+                    thumb=blob.blob if blob else None
                 )
             )
 
