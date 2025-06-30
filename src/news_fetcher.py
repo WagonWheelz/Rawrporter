@@ -34,9 +34,9 @@ def fetch_news( lastPost ):
             headline = entry.title
             if not contains_blocked_word(headline):
                 try:
-                    pubDate = datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %Z')
+                    pubDate = datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %Z').astimezone()
                 except:
-                    pubDate = datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %z')
+                    pubDate = datetime.datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %z').astimezone()
                 if pubDate > lastPost:
                     link = entry.link
                     print("[News Fetcher] Headline:", headline)
